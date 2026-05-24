@@ -3,7 +3,7 @@ const hre = require("hardhat");
 async function main() {
     
   const [deployer, user] = await hre.ethers.getSigners();
-  const proxyAddress = "0x956395F876bFE823f7Ac78877fC2271bA2f04f50"; 
+  const proxyAddress = process.env.PROXY_ADDRESS; 
   
   const MyTokenV1 = await hre.ethers.getContractFactory("MyTokenV1");
   const token = await MyTokenV1.attach(proxyAddress);

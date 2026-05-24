@@ -4,7 +4,7 @@ async function main() {
   const [deployer] = await hre.ethers.getSigners();
   console.log("Upgrading with account:", deployer.address);
 
-  const proxyAddress = "0x956395F876bFE823f7Ac78877fC2271bA2f04f50";
+  const proxyAddress = process.env.PROXY_ADDRESS;
   
   // Деплой V2
   const MyTokenV2 = await hre.ethers.getContractFactory("MyTokenV2");
@@ -17,7 +17,8 @@ async function main() {
   console.log("Proxy upgraded to V2");
   
   // Проверяем версию через прокси
-  const version = await upgraded.getVersion();
+  const tokenV2 = await MyTokenV2.attach(proxyAddress);
+  const version = await tokenV2.getVersion();
   console.log("New version:", version);
   
   // Проверяем, что балансы не изменились
