@@ -1,7 +1,7 @@
 {
   "name": "erc20_token_contract_hardhat",
   "version": "1.0.0",
-  "description": "",
+  "description": "An upgradeable ERC20 token using the **UUPS (Universal Upgradeable Proxy Standard)** pattern deployed on the Sepolia testnet. The contract starts as V1 and can be upgraded to V2 without losing token balances or state.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,5 +18,8 @@
   "dependencies": {
     "@openzeppelin/contracts": "^5.6.1",
     "@openzeppelin/contracts-upgradeable": "^5.6.1"
+  },
+  "directories": {
+    "test": "test"
   }
 }
